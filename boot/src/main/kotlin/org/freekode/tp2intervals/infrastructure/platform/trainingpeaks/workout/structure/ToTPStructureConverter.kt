@@ -86,6 +86,7 @@ class ToTPStructureConverter(
             workoutStep.name,
             TPLengthDTO.fromStepLength(workoutStep.length),
             targetList,
+            workoutStep.openEnded.takeIf { it }, // omitted when false, keeps the payload unchanged
         )
     }
 

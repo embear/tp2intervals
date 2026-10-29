@@ -30,7 +30,8 @@ class FromTPStructureConverter(
             tPStepDTO.length!!.toStepLength(),
             tPStepDTO.toMainTarget(),
             tPStepDTO.toSecondaryTarget(),
-            false
+            false,
+            tPStepDTO.openDuration == true,
         )
     }
 

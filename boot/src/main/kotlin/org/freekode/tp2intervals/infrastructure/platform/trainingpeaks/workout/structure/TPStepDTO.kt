@@ -6,6 +6,7 @@ class TPStepDTO(
     var name: String?,
     var length: TPLengthDTO?,
     var targets: List<TPTargetDTO> = listOf(),
+    var openDuration: Boolean? = null,
 ) {
     fun toMainTarget(): StepTarget {
         val target = targets.first { it.unit == null }

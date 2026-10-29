@@ -7,6 +7,10 @@ import java.time.Duration
 class ToIntervalsStructureConverter(
     private val structure: WorkoutStructure,
 ) {
+    companion object {
+        private const val PRESS_LAP = "Press lap"
+    }
+
     private val targetTypeMap = mapOf(
         WorkoutStructure.TargetUnit.FTP_PERCENTAGE to "%",
         WorkoutStructure.TargetUnit.LTHR_PERCENTAGE to "% LTHR",
@@ -47,7 +51,9 @@ class ToIntervalsStructureConverter(
             }
         } ?: ""
 
-        return "- $name $length $target$targetUnitStr ${structure.modifier.value} $cadence"
+        val pressLap = if (workoutStep.openEnded) PRESS_LAP else ""
+
+        return "- $name $length $target$targetUnitStr ${structure.modifier.value} $cadence $pressLap"
     }
 
     private fun toStepLength(length: StepLength) = when (length.unit) {

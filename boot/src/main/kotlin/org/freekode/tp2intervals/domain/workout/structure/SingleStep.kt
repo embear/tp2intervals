@@ -7,7 +7,9 @@ class SingleStep(
     val length: StepLength,
     val target: StepTarget,
     val cadence: StepTarget?,
-    val ramp: Boolean
+    val ramp: Boolean,
+    /** step has no fixed end, it ends when the athlete presses the lap button (length is only the planned value) */
+    val openEnded: Boolean = false,
 ) : WorkoutStep {
     override fun isSingleStep() = true
 
